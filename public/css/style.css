@@ -411,6 +411,7 @@ section.item .section-head p {
 #contact {
     position: relative;
     height: 700px;
+    overflow: hidden;
 }
 
 #contact .content {

@@ -3,12 +3,8 @@ let links = document.querySelectorAll('#header .container nav ul li');
 links.forEach(function(link) {
     link.addEventListener('click', function(e) {
         e.preventDefault();
-        links.forEach((link) => { link.classList.remove('active') });
-        
-        link.classList.add('active');
-        
-        let target = link.querySelector('a').getAttribute('href');
-        SimpleScroll.scrollTo(target, 1000, -100);
+
+        SimpleScroll.scrollTo(link.querySelector('a').getAttribute('href') , 1000, -100);
     });
 });
 
@@ -17,7 +13,6 @@ let portfolioLinks = document.querySelectorAll('#portfolio .container .portfolio
 portfolioLinks.forEach(function(link) {
     link.addEventListener('click', function(e) {
         portfolioLinks.forEach(function(link) { link.classList.remove('active') });
-        
         link.classList.add('active');
     });
 });
@@ -25,6 +20,7 @@ portfolioLinks.forEach(function(link) {
 let elements = ['#slider', '#services', "#portfolio", "#contact"];
 let scrollspy = new SimpleScrollSpy(elements);
 let current = null;
+
 scrollspy.watch(element => {
 
     if(element !== current) {
@@ -41,5 +37,4 @@ scrollspy.watch(element => {
             }
         });
     }
-
 });
