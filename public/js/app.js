@@ -23,7 +23,7 @@ portfolioLinks.forEach(function(link) {
         } else {
             portfolioItems.forEach(item => {
                 if(item.getAttribute('group') == group) return item.classList.remove('disabled');
-
+                
                 item.classList.add('disabled') 
             }) 
         }
@@ -52,3 +52,42 @@ scrollspy.watch(element => {
         });
     }
 });
+
+let slides = (document.querySelectorAll('#slider .slides .slide').length) - 1;
+let currentSlide = 0;
+
+let prevButton = document.querySelector('#slider .arrow.arrow-prev');
+let nextButton = document.querySelector('#slider .arrow.arrow-next');
+
+prevButton.addEventListener('click', function(e) {
+    updateSlide(currentSlide - 1);
+});
+
+nextButton.addEventListener('click', function(e) {
+    updateSlide(currentSlide + 1);
+});
+
+updateSlide(0);
+
+function updateSlide(slide) {
+    if(slide < 0) {
+        slide = slides;
+    }
+    if(slide > slides) {
+        slide = 0;
+    } 
+    
+    updateProgress(slide, slides);
+
+    document.querySelectorAll('#slider .slides .slide')[currentSlide].classList.remove('current');
+    currentSlide = slide;
+    document.querySelectorAll('#slider .slides .slide')[currentSlide].classList.add('current'); 
+}
+
+function updateProgress(current, total) {
+    let percent = (current / total) * 100 ;
+
+    if(percent === 0) percent = 25;
+
+    document.querySelector('#slider .progress').style.width = percent + '%';
+}

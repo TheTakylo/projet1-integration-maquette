@@ -92,12 +92,21 @@ span.separator::after {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 25%;
+    width: 0%;
     height: 4px;
+    transition-duration: .3s;
     background-color: #5cadd3;
 }
 
-#slider img {
+#slider .slides .slide {
+    display: none;
+}
+
+#slider .slides .slide.current {
+    display: block;
+}
+
+#slider .slides .slide img {
     height: 600px;
     width: 100%;
     object-fit: cover;
@@ -371,9 +380,12 @@ section.item .section-head p {
     height: 100%;
     width: 100%;
     opacity: 0;
+
+    z-index: -1;
 }
 #portfolio .portfolio-items figure.disabled::after {
     opacity: .7;
+    z-index: 1;
 }
 
 #portfolio .portfolio-items figure:hover img {
