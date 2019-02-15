@@ -39,7 +39,7 @@ span.separator::after {
     top: 0;
     left: 0;
     right: 0;
-
+    
 }
 #header .container {
     display:flex;
@@ -356,6 +356,26 @@ section.item .section-head p {
     position: relative;
     overflow: hidden;
 }
+
+#portfolio .portfolio-items figure.disabled { pointer-events: none; }
+
+#portfolio .portfolio-items figure::after {
+    background-color: #fff;
+    transition-duration: .2s;
+    content: "";
+    top: 0;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+}
+#portfolio .portfolio-items figure.disabled::after {
+    opacity: .7;
+}
+
 #portfolio .portfolio-items figure:hover img {
     transform: scale(1.2);
 }
@@ -528,7 +548,7 @@ section.item .section-head p {
         margin-bottom: 50px;
     }
     #services #skills ul li:last-child { margin-bottom: 0; }
-
+    
     #services #skills ul li i {
         float: none;
         display: block;
@@ -552,7 +572,7 @@ section.item .section-head p {
     .container {
         max-width: 540px;
     }
-
+    
     #portfolio .portfolio-items {
         grid-template-columns: repeat(1, 1fr);
     }
@@ -560,12 +580,12 @@ section.item .section-head p {
         width: 80%;
         margin: 0 auto;
     }
-
+    
     #portfolio .portfolio-navigation ul {
         padding-bottom: 0;
         display: flex;
     }
-
+    
     #portfolio .portfolio-navigation li {
         margin: 0 auto;
     }
@@ -574,7 +594,7 @@ section.item .section-head p {
         height: auto;
         padding-top: 25px;
     }
-
+    
     #slider .slider-item  {
         left: 50%;
         text-align: center;
@@ -583,15 +603,15 @@ section.item .section-head p {
     #slider .slider-item img {
         height: 47px;
     }
-
+    
     #slider .slider-item .slider-item-content { width: 70%; margin: 0 auto; }
     #slider .slider-item .slider-item-content .button{ margin-left: auto; margin-right: auto; }
-
+    
     #header .container img {
         height: 40px;
         margin: 0 auto 35px auto;
     }
-
+    
     #header .container {
         flex-direction: column;
     }
@@ -606,7 +626,7 @@ section.item .section-head p {
         height: 50px;
         line-height: 50px;
     }
-
+    
     #contact .content form{
         width: 90%;
     }
