@@ -122,6 +122,7 @@ span.separator::after {
     width: 35px;
     height: 70px;
     cursor: pointer;
+    z-index: 999;
     text-align: center;
     
     transition-duration: .2s;
