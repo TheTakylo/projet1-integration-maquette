@@ -16,13 +16,13 @@ portfolioLinks.forEach(function(link) {
         portfolioLinks.forEach(function(link) { link.classList.remove('active') });
         link.classList.add('active');
         
-        let group = link.getAttribute('portfolio-group');
+        let group = link.getAttribute('data-category');
         
         if(group == '*') {
             portfolioItems.forEach(item => { item.classList.remove('disabled')} )
         } else {
             portfolioItems.forEach(item => {
-                if(item.getAttribute('group') == group) return item.classList.remove('disabled');
+                if(item.getAttribute('data-group') == group) return item.classList.remove('disabled');
                 
                 item.classList.add('disabled') 
             }) 
