@@ -514,6 +514,114 @@ section.item .section-head p {
     height: 200px;
 }
 
+
+#portfolio-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999999;
+    height: 100%;
+    width: 100%;
+
+    background-color: rgba(0, 0, 0, .25);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#portfolio-overlay .content {
+    height: auto;
+    width: 50%;
+    background-color: #fff;
+    padding: 50px 30px;
+}
+
+#portfolio-overlay .content .pictures {
+    width: 450px;
+}
+
+#portfolio-overlay .content .pictures img {
+    width: 450px;
+}
+#portfolio-overlay .content .pictures .minislide {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#portfolio-overlay .content .pictures .minislide span.fa {
+    width: 30px;
+    height: 70px;
+    background-color: rgba(92, 173, 211, .7);
+    text-align: center;
+    line-height: 70px;
+    color: #fff;
+    font-size: 18px;
+    cursor :pointer;
+}
+
+#portfolio-overlay span.close {
+    position: relative;
+    top: -230px;
+    left: 930px;
+    z-index: 999999999;
+    font-size: 20px;
+    color: rgb(0, 0, 0, .4);
+}
+
+#portfolio-overlay .content {
+    display: flex;
+    flex-direction: row;
+}
+
+#portfolio-overlay .content .pictures .minislide span.fa:hover {
+    background-color: rgba(92, 173, 211);
+}
+
+#portfolio-overlay .content .pictures .minislide div img { height: 70px; width: auto; }
+
+#portfolio-overlay .content .pictures .minislide div { position: relative; }
+#portfolio-overlay .content .pictures .minislide div:after{
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, .85);
+    cursor: pointer;
+}
+
+#portfolio-overlay .content .pictures .minislide div.active:after{
+    background-color: rgba(255, 255, 255, 0);
+}
+
+#portfolio-overlay .content .text {
+    padding: 0 25px;
+    color: #36383a;
+}
+
+
+#portfolio-overlay .content .text h2 { font-size: 32px }
+#portfolio-overlay .content .text span {
+    margin-top: 25px;
+    display: block;
+    font-weight: 600;
+}
+
+#portfolio-overlay .content .text p {
+    margin-top: 25px;
+    line-height: 1.5;
+}
+
+#portfolio-overlay .content .text a.button {
+    margin-top: 35px;
+    float: right;
+}
+
 /**
 *   RESPONSIVE
 */
