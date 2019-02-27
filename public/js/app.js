@@ -1,10 +1,13 @@
 let links = document.querySelectorAll('#header .container nav ul li');
+let disableSpy = false;
 
 links.forEach(function(link) {
     link.addEventListener('click', function(e) {
         e.preventDefault();
-        
-        SimpleScroll.scrollTo(link.querySelector('a').getAttribute('href') , 1000, -100);
+        disableSpy = true;
+	links.forEach(item => { item.classList.remove('active') });
+        link.classList.add('active');
+	SimpleScroll.scrollTo(link.querySelector('a').getAttribute('href') , 1000, -100);
     });
 });
 
@@ -42,6 +45,8 @@ scrollspy.watch(element => {
         
         let id = '#'+ current.getAttribute('id');
         
+	if(disableSpy) return;
+
         links.forEach(link => { 
             
             if(link.querySelector('a').getAttribute('href') !== id) {
