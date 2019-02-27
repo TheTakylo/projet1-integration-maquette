@@ -1,14 +1,14 @@
 let links = document.querySelectorAll('#header .container nav ul li');
-let disableSpy = false;
+let disableSpy = null;
 
 links.forEach(function(link) {
     link.addEventListener('click', function(e) {
         e.preventDefault();
-        disableSpy = true;
+        disableSpy = document.querySelector(link.querySelector('a').getAttribute('href'));
 	links.forEach(item => { item.classList.remove('active') });
         link.classList.add('active');
-	SimpleScroll.scrollTo(link.querySelector('a').getAttribute('href') , 1000, -100);
-    });
+	SimpleScroll.scrollTo(link.querySelector('a').getAttribute('href') , 1000, -100);   
+ });
 });
 
 let portfolioLinks = document.querySelectorAll('#portfolio .container .portfolio-navigation ul li');
@@ -45,7 +45,11 @@ scrollspy.watch(element => {
         
         let id = '#'+ current.getAttribute('id');
         
-	if(disableSpy) return;
+	if(disableSpy) {
+	   if(element === disableSpy) {
+	      disableSpy = null;
+           } 
+	}
 
         links.forEach(link => { 
             
