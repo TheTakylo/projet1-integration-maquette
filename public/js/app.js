@@ -1,14 +1,20 @@
 let links = document.querySelectorAll('#header .container nav ul li');
+let buttonServices = document.querySelector('#slider .slider-item .slider-item-content a.button');
+
+buttonServices.addEventListener('click', e => {
+    e.preventDefault();
+    SimpleScroll.scrollTo('#services' , 1000, -100);   
+})
 let disableSpy = null;
 
 links.forEach(function(link) {
     link.addEventListener('click', function(e) {
         e.preventDefault();
-        disableSpy = document.querySelector(link.querySelector('a').getAttribute('href'));
-	links.forEach(item => { item.classList.remove('active') });
+        disableSpy = link.querySelector('a').getAttribute('href');
+        links.forEach(item => { item.classList.remove('active') });
         link.classList.add('active');
-	SimpleScroll.scrollTo(link.querySelector('a').getAttribute('href') , 1000, -100);   
- });
+        SimpleScroll.scrollTo(link.querySelector('a').getAttribute('href') , 1000, -100);   
+    });
 });
 
 let portfolioLinks = document.querySelectorAll('#portfolio .container .portfolio-navigation ul li');
@@ -45,12 +51,13 @@ scrollspy.watch(element => {
         
         let id = '#'+ current.getAttribute('id');
         
-	if(disableSpy) {
-	   if(element === disableSpy) {
-	      disableSpy = null;
-           } 
-	}
-
+        if(disableSpy) {
+            if('#' + element === disableSpy) {
+                disableSpy = null;
+            } 
+            return;
+        }
+        
         links.forEach(link => { 
             
             if(link.querySelector('a').getAttribute('href') !== id) {
@@ -87,7 +94,7 @@ function updateSlide(slide) {
     } 
     
     updateProgress(slide, slides);
-
+    
     document.querySelectorAll('#slider .slides .slide')[currentSlide].classList.remove('current');
     currentSlide = slide;
     document.querySelectorAll('#slider .slides .slide')[currentSlide].classList.add('current'); 
@@ -95,8 +102,8 @@ function updateSlide(slide) {
 
 function updateProgress(current, total) {
     let percent = (current / total) * 100 ;
-
+    
     if(percent === 0) percent = 25;
-
+    
     document.querySelector('#slider .progress').style.width = percent + '%';
 }
