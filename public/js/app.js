@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 let links = document.querySelectorAll('#header .container nav ul li');
 let servicesButton = document.querySelector('#slider .slider-item .slider-item-content a.button');
 
@@ -7,15 +8,24 @@ servicesButton.addEventListener('click', e => {
     SimpleScroll.scrollTo('#services', 1000, -100);
 })
 
+=======
+let links = document.querySelectorAll('#header .container nav ul li a, #slider .slider-item-content a.button');
+>>>>>>> ca1bb18c86ca14703b12fd1719bb7d4ee74dbaa3
 let disableSpy = null;
 
 links.forEach(function (link) {
     link.addEventListener('click', function (e) {
         e.preventDefault();
+<<<<<<< HEAD
         disableSpy = link.querySelector('a').getAttribute('href');
         links.forEach(item => { item.classList.remove('active') });
         link.classList.add('active');
         SimpleScroll.scrollTo(link.querySelector('a').getAttribute('href'), 1000, -100);
+=======
+        console.log(link)
+        disableSpy = document.querySelector(link.getAttribute('href'));
+        SimpleScroll.scrollTo(link.getAttribute('href') , 1000, -100);   
+>>>>>>> ca1bb18c86ca14703b12fd1719bb7d4ee74dbaa3
     });
 });
 
@@ -51,6 +61,7 @@ scrollspy.watch(element => {
     if (element !== current) {
         current = element;
         
+<<<<<<< HEAD
         if (disableSpy !== null) {
             if ('#' + element.getAttribute('id') === disableSpy) {
                 disableSpy = null;
@@ -63,6 +74,19 @@ scrollspy.watch(element => {
         links.forEach(link => {
             
             if (link.querySelector('a').getAttribute('href') !== id) {
+=======
+        let id = '#'+ current.getAttribute('id');
+        
+        if(disableSpy) {
+            if(element === disableSpy) {
+                disableSpy = null;
+            } 
+        }
+        
+        links.forEach(link => { 
+            
+            if(link.getAttribute('href') !== id) {
+>>>>>>> ca1bb18c86ca14703b12fd1719bb7d4ee74dbaa3
                 link.classList.remove('active');
             } else {
                 link.classList.add('active');
@@ -103,9 +127,15 @@ function updateSlide(slide) {
 }
 
 function updateProgress(current, total) {
+<<<<<<< HEAD
     let percent = (current / total) * 100;
     
     if (percent === 0) percent = 25;
+=======
+    let percent = (current / total) * 100 ;
+    
+    if(percent === 0) percent = 25;
+>>>>>>> ca1bb18c86ca14703b12fd1719bb7d4ee74dbaa3
     
     document.querySelector('#slider .progress').style.width = percent + '%';
 }
